@@ -15,6 +15,7 @@ from telethon.tl.functions.messages import ImportChatInviteRequest, AddChatUserR
 from telethon.tl.functions.channels import JoinChannelRequest
 from telethon.tl.types import UserStatusRecently
 import time
+import requests
 import random
 from colorama import init, Fore
 import os
@@ -412,15 +413,16 @@ while True:
         print(f'==========================================================')
         input('\nPress enter to goto main menu')
         f.close()
+        
        elif a == 6:
         print(f'\n{lg}[i] Checking for updates...')
         try:
-            version = requests.get('https://raw.githubusercontent.com/progrer/progrer0.3/version(1).txt')
+            version = requests.get('https://raw.githubusercontent.com/progrer/Progrer_0.3/main/version.txt')
         except:
             print(f'{r} You are not connected to the internet')
             print(f'{r} Please connect to the internet and retry')
             exit()
-        if float(version.text) > 0.2:
+        if float(version.text) > 1.1:
             prompt = str(input(f'{lg}[~] Update available[Version {version.text}]. Download?[y/n]: {r}'))
             if prompt == 'y' or prompt == 'yes' or prompt == 'Y':
                 print(f'{lg}[i] Downloading updates...')
@@ -428,7 +430,7 @@ while True:
                     os.system('del main.py')
                 else:
                     os.system('rm main.py')
-                os.system('curl -l -O https://raw.githubusercontent.com/progrer/progrer0.3/main.py')
+                os.system('curl -l -O https://raw.githubusercontent.com/progrer/Progrer_0.3/main/main.py')
                 print(f'{lg}[*] Updated to version: {version.text}')
                 input('Press enter to exit...')
                 exit()
